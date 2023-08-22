@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%% ABSTRACT PAGE / RESUMEN (VERSION ESPAÑOL) %%%%%%%%%%
+\pagenumbering{roman} \setcounter{page}{1}
+%\addcontentsline{toc}{chapter}{\numberline{}{Resumen}} % Uncomment to add in TOC
+\chapter*{Resumen}
+
+Este estudio investiga la utilización de modelos latentes de difusión texto-imagen (LDM) para generar conjuntos de datos sintéticos en tareas de segmentación semántica. Se enfoca específicamente en su aplicación en escenarios urbanos, donde la escasez de datos anotados motiva el uso de datos sintéticos.
+
+La investigación se centra en los mapas de atribución con atención difusiva (DAAM, por sus siglas en inglés), una técnica existente de explicabilidad que asigna la influencia de cada parte de un texto a las regiones de una imagen generada por un LDM.
+
+Se proponen dos extensiones de DAAM. En primer lugar, se introduce ``Open Vocabulary DAAM'', que permite la construcción de mapas de atribución para textos arbitrarios, independientemente de si se utilizaron como texto de entrada para la generación de las imágenes sintéticas. En segundo lugar, se propone ``Linear DAAM'', una versión simplificada que facilita la generación de mapas de atribución para palabras individuales. Estas modificaciones permiten utilizar este método para la segmentación de objetos basada en descripciones semánticas.
+
+Para abordar el desafío de seleccionar la palabra más apropiada para describir semánticamente un objeto, se propone una estrategia de optimización en el espacio de los textos. Este enfoque tiene como objetivo identificar las palabras más precisas para describir las regiones objetivo, mejorando así la precisión de las máscaras de segmentación.
+
+Para validar la metodología propuesta, se realizaron una serie de experimentos en un conjunto de datos generado mediante el modelo \emph{Stable Diffusion}. Los resultados obtenidos corroboran la efectividad de las palabras optimizadas en la segmentación de objetos en diversas imágenes.
+
+Este trabajo contribuye al problema de investigación en dos aspectos principales. En primer lugar, en el ámbito de la explicabilidad, mediante el desarrollo de "Open Vocabulary DAAM", una herramienta con potencial para analizar las relaciones semánticas aprendidas en estos modelos, así como los posibles sesgos y los mecanismos de síntesis involucrados. En segundo lugar, avanza en la investigación sobre modelos de segmentación basados en vocabulario abierto al proponer una estrategia para buscar palabras descriptivas de objetos, lo que mejora las máscaras de segmentación sin necesidad de volver a entrenar los modelos.
+
+Aunque los hallazgos presentados en este estudio son preliminares, resaltan el potencial del uso de mapas de atención en la segmentación de objetos. En conjunto, este trabajo sienta los cimientos para futuras investigaciones en este campo.
+
+\vfill
+\section*{Palabras clave}
+
+ Mapas de Atribución con Atención Difusiva (DAAM), Stable Diffusion, Modelos de Difusión, Generatión de datos sintéticos, Texto-Imagen, Modelos Generativos, Segmentación Semántica, Escenas Urbanas, Visión Artificial
+
+%%%%%%%%%%%%%% ABSTRACT PAGE / RESUMEN (ENGLISH VERSION) %%%%%%%%%%
+\newpage
+%\addcontentsline{toc}{chapter}{\numberline{}{Abstract}} % Uncomment to add in TOC
+\chapter*{Abstract}
+
+This master's thesis investigates the use of text-to-image Latent Diffusion Models (LDM) for generating synthetic datasets in semantic segmentation tasks. Specifically, it focuses on their application in urban scenarios, where the scarcity of annotated data motivates the use of synthetic data.
+
+The research centers around Diffusion Attentive Attribution Maps (DAAM), an existing explainability method used to attribute the influence of each part of a text prompt to regions in a generated image produced by an LDM.
+
+Two extensions of DAAM are proposed. Firstly, ``Open Vocabulary DAAM'' is introduced, enabling the construction of attribution maps for arbitrary texts, regardless of whether they were used as prompts for generating the synthetic images. Secondly, ``Linear DAAM'' is presented as a simplified version that facilitates the generation of attribution maps for individual words. These modifications facilitate the use of this method for object segmentation based on semantic descriptions.
+
+To address the challenge of selecting the most appropriate word to semantically describe an object, an optimization strategy in the text-embedding space is proposed. This approach aims to identify the most accurate words for describing target regions, thereby enhancing the precision of segmentation masks.
+
+To validate the proposed methodology, a series of experiments were conducted on a dataset generated using Stable Diffusion. The results confirm the effectiveness of optimized tokens in segmenting objects across diverse images, thereby emphasizing the valuable semantic information contained within these tokens.
+
+This work contributes to the research problem in two main aspects. Firstly, it deepens the explainability of LDMs through the development of ``Open Vocabulary DAAM,'' a tool with the potential to analyze learned semantic relationships, potential biases, and synthesis mechanisms. Secondly, it advances research on Open Vocabulary-based segmentation models by proposing a strategy for searching descriptive words for an object, resulting in improved segmentation masks without the need for model retraining.
+
+Although these findings are preliminary, they strongly highlight the potential of attention maps in object segmentation. Moreover, they provide a solid foundation for future research in this field.
+
+
+\vfill
+\section*{Keywords}
+Diffusion Attentive Attribution Maps (DAAM),  Stable Diffusion, Latent Diffusion Models, Synthetic data generation, Text-to-Image, Generative models,  Semantic Segmentation, Urban Scenes, Computer Vision
+
+%%%%%%%%%%%%%% ACKS PAGE / AGRADECIMIENTOS %%%%%%%%%%
+\newpage
+%\addcontentsline{toc}{chapter}{\numberline{}{Acknoledgements}} % Uncomment to add in TOC
+\chapter*{Agradecimientos}
+
+
+En primer lugar, me gustaría agradecer a Juan Carlos por guiarme semana tras semana consiguiendo que no me 
+dispersase demasiado y pudiera convertir todo este esfuerzo en algo tangible.
+Me has enseñado que aún quedan profesores con vocación y la motivación suficiente para escuchar 
+lo que sus alumnos tienen que decir.
+A Roberto, por tus sabios consejos con los que has evitado que me frustara en exceso y tirara la toalla. 
+Aunque en la portada no hubiera hueco para un segundo tutor, realmente has sido uno muy bueno.
+Sin vosotros todo este trabajo no habría podido acabar en algo por escrito.
+
+A ChatGPT, por ser el asistente que hubiera soñado tener hace unos meses.
+
+A Marina, por ser el pilar más fundamental en mi vida. Siempre tienes las palabras para alegrame cualquier día. 
+En poco estaremos celebrando que nos volverá a dar la luz del sol. Te quiero.
+
+A mi madre, Mar. Por haberme enseñado a no olvidar nunca el lado humano de las cosas.
+Todos los días me sigues enseñando pequeñas lecciones de vida.
+A mi padre, Juan Ángel. Por apoyarme de la mejor forma que sabes y cuidar de las gatas.
+
+Por último, me gustaría agradecer a toda mi familia y amigos por haber soportado mi desaparición estos meses. Estoy bien, no me habían secuestrado, estaba terminando el máster.

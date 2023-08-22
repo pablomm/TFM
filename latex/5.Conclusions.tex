@@ -1,0 +1,85 @@
+%%%%%%%%%%%%%%%%%%%% CONCLUSIONES Y TRABAJO FUTURO / CONCLUSIONS AND FUTURE WORK CHAPTER %%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusions and Future Work}
+\label{cha:conclusions}
+
+\section{Conclusions}
+
+This master's thesis aimed to explore the question: ``Is it possible to use recent text-to-image Latent Diffusion Models (LDMs) to generate synthetic datasets for semantic segmentation?'' Specifically, we focused on the context of urban scenes for training Computer Vision applications related to driving.
+
+To tackle this question, we proposed the use of Diffusion Attentive Attribution Maps (DAAM) as base for our problem. DAAM \cite{DAAM} is an explainability method that leverages the attention mechanisms of LDMs to establish the relationship between tokens in the input text and the corresponding areas in the generated images.
+
+In order to extend the usage of DAAM beyond its explainability formulation, two extensions were proposed. First, ``Open Vocabulary DAAM'' was introduced to evaluate text prompts different from those used to generate the image. Second, a simplified version called ``Linear DAAM'' was developed, which allows the evaluation of individual words without the need for attention to be relative to other tokens in the prompt. This simplification facilitates the use of the method to generate masks for specific objects based on a semantically representative word.
+
+During preliminary experiments with these methods, one of the initial limitations observed was that words used to describe an object did not consistently result in aligned masks for the target area. To address this challenge, an optimization problem in the text-embedding space was formulated to identify the most suitable word that accurately describes the target region, thereby improving the segmentation masks. This optimization was approached as a gradient descent problem on the text embedding, leveraging the differentiability of Open Vocabulary DAAM. By adopting this approach, the potential and limitations of DAAM could be assessed, mitigating the impact of word selection on the segmentation results.
+
+In summary, the experiments conducted on a simple dataset generated with Stable Diffusion demonstrated the effectiveness of optimizing text embeddings and utilizing DAAM for semantic segmentation. The results showed that optimizing tokens for segmenting objects in one or two images led to the transfer of this information to other images. This finding supports our hypothesis that the discovered tokens contain semantic information about the objects to be segmented. For instance, while the word ``car'' can describe the general concept of vehicle, the optimized tokens provide a more precise description of the object without considering its surroundings.
+
+In conclusion, this research contributes to the field in two significant ways. Firstly, it advances the field of LDM explainability through the development of Open Vocabulary DAAMs. This tool holds great potential for enhancing our understanding of LDMs, unraveling learned semantic relationships, and exploring issues such as acquired biases or the mechanisms responsible for synthesizing different parts of generated images. Secondly, it contributes to the progress of Open Vocabulary-based segmentation models. The proposed methodology enables the search for words that accurately describe target objects, resulting in improved generated masks without requiring model retraining. Although this work represents an early exploration of using DAAM for segmentation in a simplified scenario, it unveils the potential of attention maps in segmenting generated objects.
+
+To finalize, in the following section, we discuss potential future directions for this research, exploring the possibilities for further exploration and applications of the proposed methods in various tasks.
+
+\section{Future work}
+
+% La idea es ordenar esta discusión de más relacionado con el tema planteado a líneas más alejadas
+% (de menos a más interesante jejej)
+
+Given the broad scope of this work and the exploratory nature of the research question, it has opened up a multitude of avenues for future investigation. To provide a comprehensive discussion of potential directions, we have structured this section into three parts. In Section \ref{sec:future-segmantic-segmentation}, we present several potential lines of investigation to extend the proposed methods for semantic segmentation in more complex scenarios. In Section \ref{sec:future-explainability}, we explore potential applications for enhancing the explainability of text-to-image LDMs, leveraging the methodologies introduced in this work. Lastly, Section \ref{sec:future-modalities} presents potential applications of the proposed methods in LDMs that integrate diverse signal modalities.
+
+\subsection{Enhancing Semantic Segmentation with DAAM}
+\label{sec:future-segmantic-segmentation}
+
+While the main focus of this work has been the study of DAAM applied to semantic segmentation, the exploratory nature of the research and the experimental setup have primarily addressed a simplified scenario. However, this scenario serves as a means to validate the proposed methods, assess their potential and limitations, and establish a baseline for future investigations.
+
+% Improve heatmaps generated
+\subsubsection{Improving Heatmaps Generated by DAAM}
+\label{sec:future-heatmaps}
+
+While the proposed method for optimizing text tokens has shown effectiveness in controlling the generated segmentation masks, its performance in terms of mIoU is limited compared to state-of-the-art algorithms for urban scene semantic segmentation. One of the sources of this limitation stems from the small size of the latent space in LDMs. In the case of Stable Diffusion 2, the attention maps are generated in a 64x64-dimensional space, while the generated images have a resolution of 512x512. To perform segmentation, the attention maps are scaled to match the image size, which compromises their ability to capture fine details.
+
+One potential approach to address this limitation is to scale the attention maps using the VAE of Stable Diffusion \cite{rombach2022high}. The VAE transforms the latent variable resulting from the reverse diffusion process (64x64) into a larger image size, such as 512x512. Exploring the use of this mechanism to scale the attention maps could enhance their granularity and precision.
+
+The precision of the masks is also significantly influenced by the aggregation of attention maps from different layers. Due to the downsampling performed in the U-Net of Stable Diffusion, not all attention arrays have a dimension of 64x64 (as shown in Fig. \ref{fig:daam}). Deeper blocks generate attention maps at resolutions of 32x32 or even 16x16, which are then scaled up to 512x512. An analysis in Appendix \ref{chap:appendix-c1} reveals that this directly impacts the generated masks, as low-resolution attention maps exhibit lower precision and alignment with the objects. Investigating the selection of the most suitable layers for extracting segmentation masks and exploring different aggregation strategies can directly improve the results obtained. The impact of these layers is clearly observed in the examples presented in Fig. \ref{fig:final-examples}, where the heatmaps of the optimized masks exhibit a halo effect around the segmented object silhouettes due to the contribution of low-resolution attention maps.
+
+Lastly, to evaluate the contribution of synthetic data generated by LDMs and DAAM to semantic segmentation models, it is necessary to assess their impact on the performance of models trained with these datasets. Evaluating the performance of DAAM in more complex scenarios and measuring the improvement achieved by the models would be a valuable direction for future research within the scope of the initial research question.
+
+\subsubsection{Open Vocabulary-based Semantic Segmentation}
+\label{sec:future-ov-segmentation}
+
+Beyond using the heatmaps directly as segmentation masks, the proposed methods hold great potential as features for segmentation models. An example of a successful approach in this regard is presented in \cite{xu2022odise} for open-vocabulary panoptic and semantic segmentation tasks. Similar to DAAM, the model described in that work extracts attention maps generated by the cross-attention mechanisms of Stable Diffusion. However, instead of utilizing these maps as masks, they are employed as features within a segmentation model. The methodology proposed in this master's thesis, which focuses on identifying tokens that align with specific concepts, could have a significant impact on open-vocabulary segmentation models \cite{xu2022odise} or object tracking \cite{ovtrack}, enabling finer control over open-vocabulary labels for describing specific objects, without the need of retraining these models.
+
+
+\subsection{Advancing the Explainability of Text-to-Image LDMs}
+\label{sec:future-explainability}
+
+While this work is framed within the context of urban scene segmentation, a significant portion of the contributions made focus on extending methods for the explainability of text-to-image LDMs. Therefore, several potential research directions can be pursued in this field.
+
+\subsubsection{Mask-To-Text Explainability method}
+
+The methodology proposed for finding tokens that align with a given target region in an image (Section \ref{cha:methodology-ov-daam-optimization}) can be leveraged as a method to transform a mask image into a text embedding. This is precisely the inverse problem of open-vocabulary object segmentation. From an explainability standpoint, this method can be highly valuable for studying the textual space used as input in text-to-image LDMs, enabling the analysis of the semantic relationships associated by the network with each object. 
+
+One potential research direction would involve studying optimization mechanisms for finding these tokens that optimize a mask. It would be necessary to investigate the convergence behavior of these tokens and analyze whether they converge to semantically similar points in the text embedding regardless of the initialization of the optimization. For example, starting from different object masks representing a car in different images, understanding if they all converge to a point in the text embedding related to the concept of a vehicle. Furthermore, a deeper exploration of how these discovered points generalize can be conducted by directly using them to generate new images and studying how the network represents them.
+
+\subsubsection{Further Study of LDM mechanisms}
+
+Expanding on the mask-to-text methods can also serve as valuable tools for studying the internal mechanisms of LDMs. For example, they can be applied to investigate the biases acquired by the models. To illustrate the potential of continuing this work in studying biases, synthetic images with people in various situations can be generated. Experiments can then be conducted to analyze the tokens attributed to the silhouettes and examine their relationship with different semantic concepts in the text embedding.
+
+Additionally, to gain a better understanding of the synthesis mechanisms in LDMs, the proposed optimization methodology can be employed on a subset of the attention blocks and heads of the U-Net in Stable Diffusion (see Eq. \ref{eq:daam-summing-ov}). This approach would enable a more detailed examination of the semantic information synthesized at different layers. Preliminary analysis presented in Appendix \ref{chap:appendix-c1} suggests that shallower layers contain coarse-grained semantic information, while deeper layers capture fine-grained semantic details. This line of research can contribute to a deeper understanding of diffusion architectures and provide valuable insights for designing more efficient architectures in the future.
+
+
+\subsection{Exploring Multi-Modal Extensions of DAAM}
+\label{sec:future-modalities}
+
+While DAAM \cite{DAAM} and this work focus on text-to-image models, the theoretical framework presented in Chapter \ref{cha:methodology} is applicable to LDMs that employ cross-attention mechanisms to guide the internal denoising process. To conclude this discussion on potential future research directions, we can explore how this work could be extended to LDMs based on modalities other than text and image.
+
+\subsubsection{Text-to-$\mathcal{S}$ LDMs}
+
+For models that take text as input, the application of Open Vocabulary DAAM could be extended to open-vocabulary tasks in Text-to-$\mathcal{S}$ LDMs. One notable advantage of this approach is the intuitive nature of the text space as an input, which facilitates the study of attribution in the $\mathcal{S}$ space. While there are already models capable of achieving high precision in image segmentation, applying this approach to other modalities where such models are not available presents significant potential.
+
+This extension can be particularly relevant for recently developed text-to-audio LDMs like AudioLDM \cite{liu2023audioldm}. AudioLDM proposes a Stable Diffusion-like architecture that employs a U-Net with similar attention mechanisms to generate high-fidelity audio from text descriptions. By expanding Open Vocabulary DAAM to incorporate this type of model, it would be possible to investigate how the model attributes different aspects of the generated audio. Many of the research directions discussed in this section can be effectively extended to this context.
+
+
+\subsubsection{$\mathcal{S}$-to-Image LDMs}
+
+Lastly, in the case of $\mathcal{S}$-to-Image LDMs, the intuitive nature of the image space can be leveraged. By extending the proposed optimization methodology in Section \ref{cha:methodology-ov-daam-optimization} to this type of LDMs, it becomes possible to study the space $\mathcal{S}$ by analyzing how object masks project onto it from the image space.
+
+For example, this approach could be particularly interesting when applied to fMRI-to-image models, such as the one presented in \cite{Takagi2023HighresolutionIR}. This work introduces a variation of Stable Diffusion for image reconstruction from fMRI scans that capture the brain activity of a person viewing an image. They propose replacing the text encoder in Stable Diffusion \cite{rombach2022high, Radford2021LearningTV} with a module that takes fMRI signals as input. In this architecture, the input space, fMRI, is highly complex and challenging to study. Therefore, exploring how objects in an image are influenced by the input fMRIs could be a valuable research direction. Understanding these mechanisms could shed light on whether there is any correlation between the patterns used by the network for image reconstruction from this signal and the biological function of brain activity.

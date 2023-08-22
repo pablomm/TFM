@@ -1,0 +1,81 @@
+%% Template for Trabajos Fin de Master (Master thesis) 
+%% Master in Deep Learning for Audio and Visual Processing.
+%% Created by Juan Carlos San Miguel (juancarlos.sanmiguel@uam.es)
+%% Fecha: January 2021
+%% TFM author: Pablo Marcos Manchon
+
+\documentclass[12pt,english,a4paper]{tfmdl4avsp}
+
+%PACKAGES REQUIRED (add more as needed)
+% \usepackage[spanish,es-tabla]{babel} 		% Uncomment to write in Spanish
+\usepackage[utf8]{inputenc}                 % to use UTF-8 characters
+\usepackage{graphicx}    	                % to insert images https://bit.ly/3bLx8F3
+\usepackage{xcolor}        	                % to use color in text https://bit.ly/2X4uJkS
+\usepackage{setspace}   	                % to use double spacing with \doublespacing
+\usepackage{geometry}		                % to set page margins https://bit.ly/3dLYQ6l
+\usepackage[pagebackref=true]{hyperref}     % to highlight links https://bit.ly/39yGfHz
+\usepackage{appendix}			            % to format the appendix https://bit.ly/2wQ06F7
+\usepackage{subcaption}                     % to add subfigures
+\usepackage{amsmath}                        % to add equations 
+\usepackage[nottoc,notlot,notlof]{tocbibind} % to add bibliography and remove LoF & LoT in TOC
+\usepackage{amssymb}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{multicol}
+\usepackage{multirow}
+%\usepackage{booktabs}
+\usepackage{amsmath}
+%\usepackage{listings}   % Add code snippets
+%\usepackage{minted} % colored code snippet
+
+%DOCUMENT SETTINGS
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=3cm,rmargin=2.5cm, nomarginpar} % margins as EPS-UAM regulations
+\hypersetup{colorlinks=true, linkcolor=red, filecolor=magenta, urlcolor=blue} % link colors
+\pagestyle{headings} % heading style
+
+\renewcommand\appendixtocname{Appendix}	% Label for the appendix in the TOC
+\renewcommand\appendixpagename{Appendix} % Label for the appendix page
+
+% Master thesis details
+\titletype{Master Thesis}   							                 % Type of work
+\degree{Master in Deep Learning for\\ Audio and Video Signal Processing} % Degree
+\department{Dpto. Tecnología Electrónica y de las Comunicaciones} 	     % Supervisor's department
+\title{Synthetic data generation using latent diffusion models for semantic segmentation of urban scenes}   		 
+% Master thesis title
+\author{Pablo Marcos Manchón}    % Name and surnames of the student
+\supervisor{Juan Carlos San Miguel Avedillo} % Name and surnames of the director/advisor
+%\ponente{}   % Name and surnames of the ponente/lecturer (only if applicable)
+\date{June 2023}
+
+\renewcommand{\chapterautorefname}{Chapter} %Chapter ref in capital letter
+
+\begin{document}
+\maketitle                          % Generate frontpage
+\include{0.Abstract}	                % Abstract and 
+
+% show ToC, LoF and LoT
+{
+	\hypersetup{linkcolor=black} %show links using red color only for ToC, LoF and LoT
+	\tableofcontents
+	\listoffigures
+	\listoftables
+}
+\cleardoublepage                
+
+\pagenumbering{arabic}			    % arabic numbering in the rest of the report
+\setcounter{page}{1}			    % reset numbering to 1
+
+\include{1.Introduction}			% incluir capítulo de introduccion/introduction
+\include{2.RelatedWork}			% incluir capítulo de estado del arte/state-of-art
+\include{3.Methodology}              % incluir capítulo de evaluacion/evaluation
+\include{4.Experiments}                  % incluir capítulo de diseño-y-desarrollo/design-and-development
+\include{5.Conclusions}            % incluir capítulo de conclusiones/conclusions
+
+\bibliographystyle{ieeetr}
+\bibliography{bibliography}
+
+\begin{appendices}
+\include{6.Appendix}
+\end{appendices}
+
+\end{document}

@@ -1,0 +1,71 @@
+%%%%%%%%%%%% INTRODUCCION / INTRODUCTION CHAPTER %%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\label{cha:intro}
+
+
+%In recent years, advances in Deep Learning have driven the development of Computer Vision research \cite{Chai2021}. The success of Deep Learning approaches in this field may be explained by the availability of large-scale datasets and computational resources that have enabled the development of highly effective models \cite{Sun2017} capable of performing a wide range of vision tasks. This evolution has accelerated the interest in the field and its use is widespread in many applications, including autonomous driving, surveillance, human-computer interaction, and medicine \cite{Dong2021}.
+
+Deep Learning has revolutionized the field of Computer Vision over the recent years, mainly due to the availability of large-scale datasets and computational resources \cite{Chai2021, Sun2017}. 
+This evolution has accelerated the interest in the field and its use is widespread in many applications, including autonomous driving, surveillance, human-computer interaction, and medicine \cite{Dong2021}.
+
+%In parallel with the growth of Computer Vision, the field of generative models has recently seen significant advancements. In contrast to discriminative approaches, as a neural network trained with a cross-entropy loss for classification, generative approaches aim to model the underlying distribution of data rather than just the conditional probability of labels given the input data \cite{NIPS2014_5ca3e9b1}. Particularly, the recent rise of diffusion models \cite{Dhariwal2021}, which have demonstrated a remarkable ability to generate images from text descriptions \cite{Dalle2, rombach2022high}, has led to an explosion of interest in editing and generating high-quality images, audios, and videos \cite{Croitoru2022DiffusionMI, DMSurveyArxivCao} that has quickly transcended outside the research community.
+
+
+%As generative models become more extended in Computer Vision applications, there is an increasing need for methods to identify important features in input data that contribute to the output and provide insights into how these models generate their results.  While the explainability of deep learning models for Computer Vision has been a longstanding area of research \cite{SALEEM2022165}, the explainability of generative models, and specifically of diffusion models, is still a novel  topic due to their recent rise. Recent efforts, such as the attribution maps based on attention mechanisms \cite{DAAM}, have shown promising advances in this direction. Developing explainability techniques for these models not only improves their reliability and transparency that contributes to their adoption in practical applications \cite{Gerlings2020ReviewingTN}, but also has the potential to extend their applicability to a wider range of domains and uses.
+
+Alongside this, generative models have seen remarkable advancements, with diffusion models gaining popularity due to their prowess in generating high-quality images, audios, and videos from textual descriptions \cite{Dhariwal2021, Dalle2, rombach2022high, Croitoru2022DiffusionMI, DMSurveyArxivCao}. However, there is a growing need for methods that can explain how these models operate, facilitating their transparency, reliability, and adoption in practical applications \cite{Gerlings2020ReviewingTN}. Despite significant progress in explaining discriminative models, explaining generative ones, especially diffusion models, remains relatively new and exploratory due to their recent emergence \cite{SALEEM2022165}.
+
+
+%Diffusion models have gained popularity for their ability to generate images conditioned on text \cite{Dalle2, rombach2022high}, making them extraordinary for applications such as artistic image generation. However, there is still much to explore regarding their potential applications, including their use for synthetic data generation \cite{jimaging8110310}, where research is already beginning to emerge in different fields \cite{kazerouni2022diffusion, DaDiffusion, TabDDPM}.
+
+Although diffusion models have made strides in artistic image generation from textual cues, the potential of using these models for synthetic data generation, particularly for semantic segmentation tasks, remains an open question \cite{jimaging8110310, kazerouni2022diffusion, DaDiffusion, TabDDPM}.
+
+
+
+\section{Motivation}
+
+Semantic segmentation, a fundamental task in Computer Vision, involves assigning semantic labels to every pixel in an image. The availability of large-scale labeled datasets is critical for training deep learning models for this task, but is often constrained due to the high cost of annotation \cite{Lin_2019_ICCV}. Existing solutions, such as coarse annotations, community annotated datasets, and training with synthetic data, have been employed to address this data scarcity \cite{Cityscapes, mapilliary, alcover2021exploring}. However, these methods often grapple with domain adaptation issues and a lack of diversity in training data, which may limit their effectiveness in real-world scenarios \cite{Nowruzi2019HowMR, alcover2021exploring}.
+
+Therefore, there is a strong motivation to develop diverse and adaptable synthetic datasets, which could potentially leverage generative models \cite{DAAM}. This research aims to bridge this gap and enhance the reliability and adaptability of deep learning models for tasks like semantic segmentation, making them more accessible for a wide range of use cases.
+
+Semantic segmentation of urban scenes, taken from the perspective of a vehicle in an urban environment, has a high application potential in autonomous driving for tasks like obstacle detection and lane recognition. However, the availability of realistic synthetic datasets with ground truth for semantic segmentation is limited, despite the growing interest from both research and industry \cite{Geyer2020A2D2AA}. While there are existing synthetic datasets and simulators for semantic segmentation, they often lack realism and variability.
+
+
+
+%%%%%%%%%% Objectives
+\section{Objectives}
+
+This master's thesis aims to address the open question: ``Is it possible to use diffusion models to generate synthetic datasets for training semantic segmentation models in urban scenes?'' Given the exploratory nature of this question, the work serves as an exploratory analysis to assess the potential of diffusion models, particularly the recent Stable Diffusion architecture \cite{rombach2022high}, which will be the foundation of this work.
+
+Specifically, the objectives of this project can be divided into the following milestones:
+
+\begin{itemize}
+\item Conduct a comprehensive study of the state of the art in the use of synthetic data for semantic segmentation to understand the overall problem to be addressed.
+\item Explore diffusion model research and examine existing explainability techniques for analyzing these models to identify suitable approaches for addressing the problem.
+\item Study the Stable Diffusion architecture and its internal processes to identify key elements for generating accurate ground truth for semantic segmentation. Propose a method to address the challenge.
+\item Perform practical experiments using the proposed methods to evaluate their limitations and potential.
+\item Identify potential applications and future research directions.
+\end{itemize}
+
+% Quito esta frase?? No 
+%By achieving these objectives, this thesis aims to contribute to the understanding and potential applications of diffusion models for synthetic data generation in the context of semantic segmentation in urban scenes.
+
+%%%%%%%%%% Report Structure
+\section{Report structure}
+
+This work is structured into five chapters, which are as follows:
+
+\begin{itemize}
+\item \autoref{cha:intro} provides an introduction to the research problem, outlining the objectives, research questions, hypotheses, and the significance and scope of the study.
+\item \autoref{cha:related-work} presents a comprehensive review of the existing literature related to the research problem, focusing on three key areas: semantic segmentation, generative models, and explainability.
+\item \autoref{cha:methodology} details the proposed methods for addressing the research problem, providing a theoretical framework underlying the proposed solution.
+\item \autoref{cha:experiments} presents the experiments conducted based on the proposed methods and evaluates their results.
+\item Finally, \autoref{cha:conclusions} presents the conclusions drawn from this work, analyzing its potential and limitations, and reflects on possible avenues for future research.%, both in addressing this problem and applying the proposed methods to other related problems.
+\end{itemize}
+
+
+
+
+
+
