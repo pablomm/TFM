@@ -2,8 +2,21 @@
 
 This repository contains the work done to complete the Master in Deep Learning for Audio and Video Signal Processing at the Universidad Autónoma de Madrid.
 
-Author: Pablo Marcos Manchón
-Advisor: Juan Carlos San Miguel Avedillo
+**Author**: Pablo Marcos Manchón
+
+**Advisor**: Juan Carlos San Miguel Avedillo
+
+| [Document](./Master%20Thesis.pdf) | [Presentation](./Presentation.pdf) |
+
+## TL;DR
+
+We extend [DAAM](https://github.com/castorini/daam), a method for attributing the influence of words that have generated an image in Stable Diffusion. The proposed extension, Open-Vocabulary DAAM, allows to generate attribution maps for any word, whether or not it is present in the text prompt.
+
+![img](./latex/img/readme/TLDR1.png)
+
+And we explore the use of this extension for concept extraction, optimizing the token to maximize attention within an area.
+
+![img](./latex/img/readme/TLDR2.png)
 
 ## Abstract
 
