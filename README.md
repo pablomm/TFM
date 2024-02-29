@@ -2,9 +2,9 @@
 
 This repository contains the work done to complete the Master in Deep Learning for Audio and Video Signal Processing at the Universidad Autónoma de Madrid.
 
-**Author**: Pablo Marcos Manchón
+**Author**: [@pablomm](https://github.com/pablomm/)
 
-**Advisor**: Juan Carlos San Miguel Avedillo
+**Advisor**: [@jcsma](https://github.com/jcsma)
 
 | [Document](./Master%20Thesis.pdf) | [Presentation](./Presentation.pdf) |
 
@@ -36,4 +36,4 @@ Although these findings are preliminary, they strongly highlight the potential o
 
 ## Code
 
-> 🚧 To be uploaded
+A more extended version of the code to reproduce this work can be found at [https://github.com/vpulab/ovam](https://github.com/vpulab/ovam).
